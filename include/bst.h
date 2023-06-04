@@ -2,6 +2,8 @@
 #ifndef INCLUDE_BST_H_
 #define INCLUDE_BST_H_
 
+#include <algorithm>
+
 template <typename T>
 class BST {
  public:
@@ -11,14 +13,16 @@ class BST {
     Node* left;
     Node* right;
   };
+
   BST() : root(nullptr) {}
+
   ~BST() {
     if (root) delTree(root);
   }
 
-  int depth();
+  int depth() const { return getDepth(root); }
 
-  int search(T value) {
+  int search(T value) const {
     for (Node* current = root; current;
          current = value < current->value ? current->left : current->right)
       if (current->value == value) return current->count;
@@ -30,6 +34,11 @@ class BST {
 
  private:
   Node* root;
+
+  int getDepth(Node* node) const { 
+      return node ? std::max(getDepth(node->left), getDepth(node->right)) + 1 : 0;
+  }
+
   Node* insertNode(Node* node, T value) {
     if (node == nullptr) {
       node = new Node;
@@ -45,6 +54,7 @@ class BST {
 
     return node;
   }
+
   void delTree(Node* node) {
     if (node) {
       delTree(node->left);
