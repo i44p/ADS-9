@@ -24,7 +24,7 @@ class BST {
       if (current->value == value) return current->count;
       current = value < current->value ? current->left : current->right;
     }
-    return current->count;
+    return -1;
   }
 
   void insert(T value) { root = insertNode(root, value); }
