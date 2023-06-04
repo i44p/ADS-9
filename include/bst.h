@@ -19,11 +19,10 @@ class BST {
   int depth();
 
   int search(T value) {
-    Node* current = root;
-    while (current) {
+    for (Node* current = root; current;
+         current = value < current->value ? current->left : current->right;)
       if (current->value == value) return current->count;
-      current = value < current->value ? current->left : current->right;
-    }
+
     return -1;
   }
 
@@ -43,7 +42,7 @@ class BST {
       node->left = insertNode(node->left, value);
     else if (node->value < value)
       node->right = insertNode(node->right, value);
-      
+
     return node;
   }
   void delTree(Node* node) {
