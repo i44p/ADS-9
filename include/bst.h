@@ -23,7 +23,7 @@ class BST {
     while (current == nullptr || current->value == value) {
       current = value < current->value ? current->left : current->right;
     }
-    return current;
+    return current->count;
   }
 
   void insert(T value) { root = insertNode(root, value); }
@@ -36,9 +36,9 @@ class BST {
       node->value = value;
       node->count = 1;
       node->left = node->right = nullptr;
-    } else if (root->value > value)
+    } else if (node->value > value)
       node->left = insertNode(node->left, value);
-    else if (root->value < value)
+    else if (node->value < value)
       node->right = insertNode(node->right, value);
     else
       node->count++;
