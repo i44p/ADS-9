@@ -20,7 +20,7 @@ class BST {
 
   int search(T value) {
     for (Node* current = root; current;
-         current = value < current->value ? current->left : current->right;)
+         current = value < current->value ? current->left : current->right)
       if (current->value == value) return current->count;
 
     return -1;
