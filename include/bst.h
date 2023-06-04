@@ -13,7 +13,7 @@ class BST {
     if (root) delTree(root);
   }
 
-  int depth() const { return getDepth(root); }
+  int depth() const { return maxDepth(root) - 1; }
 
   int search(T value) const {
     for (Node* current = root; current;
@@ -35,8 +35,8 @@ class BST {
 
   Node* root;
 
-  int getDepth(Node* node) const {
-    return node ? std::max(getDepth(node->left), getDepth(node->right)) + 1 : 0;
+  int maxDepth(Node* node) const {
+    return node ? std::max(maxDepth(node->left), maxDepth(node->right)) + 1 : 0;
   }
 
   Node* insertNode(Node* node, T value) {
