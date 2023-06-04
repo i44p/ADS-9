@@ -7,13 +7,6 @@
 template <typename T>
 class BST {
  public:
-  struct Node {
-    T value;
-    int count;
-    Node* left;
-    Node* right;
-  };
-
   BST() : root(nullptr) {}
 
   ~BST() {
@@ -33,6 +26,13 @@ class BST {
   void insert(T value) { root = insertNode(root, value); }
 
  private:
+  struct Node {
+    T value;
+    int count;
+    Node* left;
+    Node* right;
+  };
+
   Node* root;
 
   int getDepth(Node* node) const { 
