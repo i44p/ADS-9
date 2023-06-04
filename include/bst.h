@@ -35,8 +35,8 @@ class BST {
 
   Node* root;
 
-  int getDepth(Node* node) const { 
-      return node ? std::max(getDepth(node->left), getDepth(node->right)) + 1 : 0;
+  int getDepth(Node* node) const {
+    return node ? std::max(getDepth(node->left), getDepth(node->right)) + 1 : 0;
   }
 
   Node* insertNode(Node* node, T value) {
@@ -45,13 +45,13 @@ class BST {
       node->value = value;
       node->count = 1;
       node->left = node->right = nullptr;
-    } else if (value == node->value)
+    } else if (value == node->value) {
       node->count++;
-    else if (node->value > value)
+    } else if (node->value > value) {
       node->left = insertNode(node->left, value);
-    else if (node->value < value)
+    } else if (node->value < value) {
       node->right = insertNode(node->right, value);
-
+    }
     return node;
   }
 
